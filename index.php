@@ -17,7 +17,21 @@
         <h2>
             Genera una password sicura
         </h2>
+
+        <form action="" method="get">
+            <label for="psw"> Password's length </label>
+            <input type="text" name="pswLength" id="pswLength">
+        </form>
     </div>
 
 </body>
 </html>
+
+<?php 
+
+$characters = ['qwertyuiopasdfghjklzxcvbnm', 'QWERTYUIOPASDFGHJKLZXCVBNM', '1234567890', '!"£$%&/()=?^'];
+var_dump($characters);
+
+
+
+?>

@@ -1,4 +1,45 @@
-<?php ?>
+<?php 
+
+//$characters = ['qwertyuiopasdfghjklzxcvbnm', 'QWERTYUIOPASDFGHJKLZXCVBNM', '1234567890', '!"£$%&/()=?^'];
+$lowerLetters = range('a', 'z');
+$upperLetters = range('A', 'Z');
+$numbers= range(1,9);
+$specialChar = ['!', '£', '&', '%', '-', '*'];
+
+//creo unico array dove metterò gli altri creati precedentemente
+$mixedArray = [...$upperLetters, ...$lowerLetters, ...$numbers, ...$specialChar];
+
+
+
+//var_dump($mixedArray);
+
+$passwordLength = $_GET['pswLength'];
+
+
+
+$newPsw = '';
+
+for ($i=0; $i < $passwordLength; $i++) { 
+
+    //genero numero randomico sugli elementi presente nel mio array mixedArray
+    $randNum = rand(0, count($mixedArray)-1);
+
+    //il numero randomico generato lo metto all'indice  dell'array stesso
+    $randomChar = $mixedArray[$randNum];
+
+    //i caratteri/numeri generati casualmente li salvo dentro una variabile vuota creata prima del ciclo
+    $newPsw .= $randomChar;
+}
+
+//var_dump($randNum);
+
+//var_dump($randomChar);
+
+var_dump($newPsw);
+
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,55 +66,24 @@
         </form>
 
         <div>
-            <p>
-                The password generated:
-            </p>
-            <p>
-                <?php echo $newPsw ?>
-            </p>
-        </div>
+    <p>
+        <?php 
+        if($passwordLength <= 0){
+            echo 'Valore non valido';
+        }?> <br>
+        The password generated is:
+    </p>
+    <p>
+        <strong>
+            <?php echo $newPsw ?>
+        </strong> 
+    </p>
+</div>
+
     </div>
 
 </body>
 </html>
 
-<?php 
-
-//$characters = ['qwertyuiopasdfghjklzxcvbnm', 'QWERTYUIOPASDFGHJKLZXCVBNM', '1234567890', '!"£$%&/()=?^'];
-$lowerLetters = range('a', 'z');
-$upperLetters = range('A', 'Z');
-$numbers= range(1,9);
-$specialChar = ['!', '£', '&', '%', '-', '*'];
-
-//creo unico array dove metterò gli altri creati precedentemente
-$mixedArray = [...$upperLetters, ...$lowerLetters, ...$numbers, ...$specialChar];
 
 
-
-//var_dump($mixedArray);
-
-$passwordLength = $_GET['pswLength'];
-
-$newPsw = '';
-
-for ($i=0; $i < $passwordLength; $i++) { 
-
-    //genero numero randomico sugli elementi presente nel mio array mixedArray
-    $randNum = rand(0, count($mixedArray)-1);
-
-    //il numero randomico generato lo metto all'indice  dell'array stesso
-    $randomChar = $mixedArray[$randNum];
-
-    //i caratteri/numeri generati casualmente li salvo dentro una variabile vuota creata prima del ciclo
-    $newPsw .= $randomChar;
-}
-
-//var_dump($randNum);
-
-//var_dump($randomChar);
-
-var_dump($newPsw);
-
-
-
-?>

@@ -1,5 +1,6 @@
 <?php 
 
+
 //$characters = ['qwertyuiopasdfghjklzxcvbnm', 'QWERTYUIOPASDFGHJKLZXCVBNM', '1234567890', '!"£$%&/()=?^'];
 $lowerLetters = range('a', 'z');
 $upperLetters = range('A', 'Z');
@@ -52,23 +53,34 @@ var_dump($newPsw);
 </head>
 <body>
     <div class="container text-center">
-        <h1>
+        <h1 class="mb-5">
             Strong Password Generator
         </h1>
-        <h2>
+        <h2 class="mb-4">
             Genera una password sicura
         </h2>
 
-        <form action="" method="get">
+        <form action="index.php" method="get">
             <label for="psw"> Password's length </label>
             <input type="text" name="pswLength" id="pswLength">
-            <input type="submit" value="submit">
+            <input class="mb-5" type="submit" value="submit">
+
+
+            <div>
+                <p>
+                    Consenti ripetizioni di uno o più caratteri:
+                </p>
+                <label for="yes">Yes</label>
+                <input type="radio" name="repetition" value="yes">
+                <label for="yes">No</label>
+                <input type="radio" name="repetition" value="no">
+            </div>
         </form>
 
         <div>
     <p>
         <?php 
-        if($passwordLength <= 0){
+        if($passwordLength <= 0 || !is_numeric($passwordLength)){
             echo 'Value insterted is not valid, please try again';
         }?> <br>
         The password generated is:

@@ -69,7 +69,7 @@ var_dump($newPsw);
     <p>
         <?php 
         if($passwordLength <= 0){
-            echo 'Valore non valido';
+            echo 'Value insterted is not valid, please try again';
         }?> <br>
         The password generated is:
     </p>
